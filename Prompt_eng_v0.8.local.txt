@@ -1,0 +1,275 @@
+[Overall Objective:
+This is a new thread prompt to convert Visual C++ to new python programs
+after through and completely analysis and understanding on Visual C++ programs.
+the business logic of source and target projects should keep coincidence with each other.
+If it makes errors or failures during converting process,
+prompt the answer to settle down them step-by-step.
+]
+
+1. Project Overview
+- The source programs consist of a GUI screen for Korean morphological analysis,
+  an engine program in C++ with dictionary data.
+- The source project folder  F:\EngineX   as root folder (Visual C++ programs),
+  and should not be changed or modified by you(AI) absolutely.
+  The target project folder  F:\Engine_py as root folder (Python programs).
+- if needing, make subfolders from the target root folder as naming rules reasonably.
+- The sourceprograms are provided as a Visual C++ program, 
+  which must be compiled or built to generate an .exe file.
+- Dictionary data are located at F:\EngineX\EngineX\Dictionary\All_*.txt files.
+- The executable file references the dictionary data for execution.
+- If you find out some requirements or involvement of human during executing, 
+  you should specify them with holding time. 
+- If errors are found from the source program, you can modify or correct only target programs by logging 
+  the list in detail.
+
+2. Analyze the provided Visual C++ program source code.
+2.1 The purposes of the analysis are as follows:
+- Bug review 
+- Performance optimization
+- Application of a new programming language (Python)
+- UI improvement
+
+2.2 UI improvement guide:
+- UI result screen file is on F:\EngineX\실행파일UI.png
+- In the attached execution result screen, 
+  hide the columns at the back of the Morphological Analysis Result tab (bottom area) 
+  except for the Original Text, Stem, and Ending columns.
+
+3. Develop an application program in Python.
+3.0 If you need any libraries or modules, you may import or install promptly without my acceptances.
+    and also, you should provide all the process and guide to set up the environment in detail.
+3.1 The screen should be developed using Python QT.
+3.2 Use the list of dictionary data from the existing program.
+[Overall Objective:
+This is a new thread prompt to convert Visual C++ to python programs by AI.
+If it makes errors or failures during converting process,
+prompt the answer to settle down them step-by-step.
+]
+
+1. The source programs consist of a GUI screen for Korean morphological analysis,
+ an engine program in C++ with dictionary data.
+- The source project folder  F:\EngineX   as root folder (C++ programs).
+  The target project folder  F:\Engine_py as root folder (Python programs).
+- if needing, make subfolders from the root folder as naming rules reasonably.
+- The sourceprograms are provided as a Visual C++ program, 
+  which must be compiled or built to generate an .exe file.
+- Dictionary data are located at F:\EngineX\EngineX\Dictionary\All_*.txt files.
+- The executable file references the dictionary data for execution.
+
+2. Analyze the provided Visual C++ program source code.
+2.1 The purposes of the analysis are as follows:
+- Bug review 
+- Performance optimization
+- Application of a new programming language (Python)
+- UI improvement
+
+2.2 UI improvement guide:
+- UI result screen file is on F:\EngineX\실행파일UI.png
+- In the attached execution result screen, 
+  hide the columns at the back of the Morphological Analysis Result tab (bottom area) 
+  except for the Original Text, Stem, and Ending columns.
+
+3. Develop an application program in Python.
+3.0 If you need any libraries or modules, you may import or install promptly without my acceptances.
+    and also, you should provide all the process and guide to set up the environment in detail.
+3.1 The screen should be developed using Python QT.
+3.2 Use the list of dictionary data from the existing program.
+3.3 the python project folder must be F:\Engine_py as root folder.
+    if needing, make subfolders from the root folder as naming rules reasonably.
+3.4 Package the created program files into a compressed ZIP file.
+3.5 Convert the final program into an executable .exe file
+  like installshield type.
+3.6 Prepare a user guide document (README.txt).
+- Include the program structure and explanations
+ so that other programmers can analyze, understand, and improve the program.
+ 
+ 
+4. Make executable program and prepare Output documents
+4.1 Package the created program files into a compressed ZIP file.
+4.2 Convert the final program into an executable .exe file
+  like installshield type.
+4.3 Prepare a user guide document (README.txt).
+- Include the program structure and explanations
+ so that other programmers can analyze, understand, and improve the program.
+4.4 Append detailed description to function or module level.
+
+ 
+ 
+ 
+Notice
+::set up the workspace with 2 project folders
+::F:/Engine_py/.venv/Scripts/python.exe -m app.main
+
+From VS Code terminal (PowerShell):
+Using ENV:
+$env:ENGINEPY_DICT='F:\EngineX\EngineX\Dictionary'; python.exe main.py
+Using CLI arg:
+python.exe main.py F:\EngineX\EngineX\Dictionary
+
+
+
+
+Implement a reversed trie (suffix trie) for endings to speed candidate lookup.
+Integrate timing hooks (simple profiling) to compare old vs new ending search.
+Add optional debug trace collection in AdvancedAnalyzer (rule sequence, candidates).
+Create golden test harness scaffold (directory + README for placing C++ output pairs).
+Run PyInstaller build and ZIP packaging to ensure no regressions.
+Update README with new performance and debugging sections.
+
+
+
+Here’s a concise step-by-step summary of what’s been done so far:
+
+Project discovery and setup
+Scanned the C++ project (EngineX) and identified core files and dictionaries.
+Found/used the Python project skeleton (Engine_py) and set up a venv.
+Installed dependencies (PySide6, chardet, pyinstaller, pytest).
+
+GUI and UX
+Implemented PySide6 UI showing exactly 3 columns: Original Text, Stem, Ending.
+Fixed layout/indentation issues in app/main.py.
+Added “Advanced algorithm” toggle.
+Added “Debug trace” toggle with CSV export.
+
+Dictionary handling
+Implemented encoding-aware loader with cp949 fallback.
+Bootstrapped auto-copy of dictionaries from the C++ project path when missing.
+
+Core analyzers
+Basic analyzer: longest-stem heuristic (baseline).
+Advanced analyzer: trie-based stem lookup + reversed suffix trie for endings.
+Normalization placeholder for final syllables.
+
+Hangul utilities and rules scaffold
+Added basic Hangul jamo helpers (decompose/compose/batchim).
+Created exceptions pipeline (rule stubs) with initial irregular heuristics (e.g., ㅂ, 듣).
+
+Performance work
+Implemented and integrated a reversed suffix trie.
+Wrote benchmark script comparing naive vs trie suffix lookups.
+Ran profiling; on small samples, speed was comparable.
+
+Debug tracing
+Instrumented AdvancedAnalyzer to record candidates, chosen pair, rules, and timings.
+Exposed enable/disable and data retrieval methods.
+Wired GUI “Debug trace” to export analyze_debug_trace.csv.
+
+Tests
+Added pytest tests for Hangul utilities, advanced analyzer behavior, and suffix trie.
+Added a test for debug trace output.
+All tests passing (8/8).
+
+Packaging
+Updated build script to prefer venv’s PyInstaller.
+Built one-file EXE (dist/EngineXPy.exe).
+Built folder dist for NSIS (dist/EngineXPy/).
+Created ZIP (EngineXPy.zip).
+Installer script (tools/installer.nsi) prepared for NSIS compile.
+
+Golden comparison
+Added compare_golden.py to compare against the C++ output file.
+Ran comparison and produced summary + mismatches CSV.
+Current results: 2410 lines; 1294 full matches; 120 stem-only; 472 ending-only; 524 mismatches; 53.69% full match rate.
+
+Health check
+Build: OK (folder + onefile).
+Tests: OK (8 passed).
+UI requirements: OK (3 columns only).
+
+
+
+
+
+
+Checklist:
+
+Use your local venv
+Launch the GUI with the EngineX dictionary via env or CLI arg
+Optional: run from terminal
+What I set up
+
+Created launch.json with two entries:
+EnginePy GUI (ENV): runs main.py and sets ENGINEPY_DICT=F:\EngineX\EngineX\Dictionary
+EnginePy GUI (Arg: Dictionary): runs main.py with the dictionary path as a CLI argument
+These use the new “debugpy” debugger type.
+How to run in VS Code
+
+###############################################################
+Open F:\Engine_py in VS Code.
+Select your interpreter: bottom-right status bar > Python: 
+  Select Interpreter > pick F:\Engine_py.venv\Scripts\python.exe.
+Press F5, and pick:
+“EnginePy GUI (ENV)” to use ENGINEPY_DICT, or
+“EnginePy GUI (Arg: Dictionary)” to pass the path as an argument.
+The app window should launch. 
+Use File > Set Dictionary Folder… if you want to change it.
+Run from terminal (optional)
+
+From VS Code terminal (PowerShell):
+Using ENV:
+$env:ENGINEPY_DICT='F:\EngineX\EngineX\Dictionary'; python.exe main.py
+Using CLI arg:
+python.exe main.py F:\EngineX\EngineX\Dictionary
+
+ 
+ 
+$pythonCode = "print('Hello from PowerShell using Python!')"
+Invoke-Expression "& python -c ""$pythonCode"""
+
+
+
+
+#############################################################################################
+In the VC++ program (F:\EngineX),
+1. Make the following UI modifications 
+2. Generate an executable file (.exe) through the process to compile and build
+
+
+UI improvement guide:
+The UI result screen file is located at: F:\EngineX\실행파일UI.png
+In the attached execution result screen, 
+hide the columns at the back of the Morphological Analysis Result tab (bottom area), 
+keeping only the Original Text, Stem, and Ending columns visible.
+
+
+help me set up a VS Code build task for one-click building
+
+msbuild F:\EngineX\EngineX.sln /p:Configuration=Release
+
+c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe
+c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\amd64\MSBuild.exe
+
+C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools>
+
+
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\<version>\atlmfc\include
+C:\Program Files (x86)\Windows Kits\10\Include\<version>\um
+C:\Program Files (x86)\Windows Kits\10\Include\<version>\shared
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\"
+
+
+VisualStudio에서 개발된 VC++프로그램을 VScode 같은 다른 IDE에서
+컴파일/빌드하여 exe실행파일을 만드는 방법
+
+where /R c:\ MSBuild.exe
+c:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe
+c:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe
+
+
+C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\include
+Click the Start button on Windows.
+Type Developer Command Prompt or, 
+for your version, for example, Developer Command Prompt for VS 2022.
+Open the "Developer Command Prompt for Visual Studio"
+ (it sets up the environment for MSBuild).
+ 
+2. Open from Within Visual Studio
+Launch Visual Studio.
+Go to the Tools menu.
+Select Command Line, then choose either Developer Command Prompt or Developer PowerShell.
+
+1. F:\EngineX\EngineX\EngineX\EngineX.vcxproj 참조하여 
+ VScode IDE환경에서 컴파일/빌드하여 실행파일(exe)파일 생성하기 위한 목적이다.
+ CMake 빌드설정을 위한  CMakeLists.txt 작성한다.
+
+2. 단, 모든 출력 혹은 생성경로는 F:\EngineX\ 위치에 생성한다.
