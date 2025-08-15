@@ -1,0 +1,60 @@
+# Build outputs at repo root
+/EngineX.exe
+/*.pdb
+/*.ilk
+/*.ipdb
+/*.iobj
+/*.lib
+/*.exp
+/*.obj
+/*.log
+
+# CMake/CTest
+/ .cmake/
+/CMakeCache.txt
+/CMakeFiles/
+/cmake_install.cmake
+/compile_commands.json
+/Testing/
+/install_manifest.txt
+
+# Visual Studio/MSVC
+*.VC.db
+*.VC.opendb
+*.aps
+*.ncb
+*.suo
+*.user
+/.vs/
+/.vscode/
+
+# Common build dirs
+/Debug/
+/Release/
+/ipch/
+/x64/
+/x86/
+/bin/
+/obj/
+/out/
+
+# Root-level CMake-generated VS projects/solutions
+/ALL_BUILD.vcxproj
+/ALL_BUILD.vcxproj.filters
+/ZERO_CHECK.vcxproj
+/ZERO_CHECK.vcxproj.filters
+/EngineX.sln
+/EngineX.vcxproj
+/EngineX.vcxproj.filters
+
+# Root-level runtime assets copied post-build
+/Dictionary/
+/AllStem.Dic
+/All_Stem.txt
+/All_User.txt
+
+# EngineX subfolder build outputs
+EngineX/Debug/
+EngineX/Release/
+EngineX/*.VC.db
+EngineX/*.VC.opendb
